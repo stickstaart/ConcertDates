@@ -1,6 +1,6 @@
 import Flag from 'react-world-flags'
 import dates from './dates'
-import uuidv4 from 'uuid/v4'
+import { v4 as uuidv4 } from 'uuid';
 
 function App () {
   return (
@@ -25,17 +25,19 @@ const ConcertList = () => {
   return (
     <ul>
       {dates.map(date => (
-        <ConcertDate key={uuid.v4()}/>
+        <ConcertDate key={uuidv4()} date={date}/>
       ))}
     </ul>
   )
 }
 
-const ConcertDate = () => {
+const ConcertDate = ({date}) => {
   return (
     <li>
-      <Flag code={dates.country}/>
-      {dates.date}
+      <span>
+            <Flag code={date.country}/>
+      </span>
+      <span>Date: {date.date}</span>
     </li>
   )
 }
