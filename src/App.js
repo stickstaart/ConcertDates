@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import Flag from 'react-world-flags'
+import dates from './dates'
+import uuidv4 from 'uuid/v4'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav className="nav-bar">
+        <div className={'nav-item'}>One</div>
+        <div className={'nav-item'}>Two</div>
+        <div className={'nav-item'}>Three</div>
+      </nav>
+      <main>
+        <div className={'box'}>
+          <ConcertList />
+        </div>
+      </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+const ConcertList = () => {
+  return (
+    <ul>
+      {dates.map(date => (
+        <ConcertDate key={uuid.v4()}/>
+      ))}
+    </ul>
+  )
+}
+
+const ConcertDate = () => {
+  return (
+    <li>
+      <Flag code={dates.country}/>
+      {dates.date}
+    </li>
+  )
+}
